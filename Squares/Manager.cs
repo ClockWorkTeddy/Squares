@@ -43,7 +43,7 @@ namespace SquaresLib
             else if (sidesStr.Length == 1)
                 return CircleProcessing(sidesStr[0]);
             else
-                throw new BadValueException("Triangle can't have 2 sides, and circle can't have 2 radiuses");
+                throw new BadValueException("Triangle should have 3 sides, and circle shouls have 1 radius");
         }
 
         public static Shape TriangleProcessing(string[] sides)

@@ -10,6 +10,19 @@ namespace Squares
     {
         static void Main(string[] args)
         {
+            if (args.Length != 0)
+            {
+                string input = String.Join(" ", args);
+                Console.WriteLine($"Your input is {input}");
+                SquaresLib.Manager.Start(input);
+            }
+            else
+            {
+                ConsoleCall();
+            }
+        }
+        static void ConsoleCall()
+        {
             Console.WriteLine("Hello! Enter your data (like '1.08' for circle or '1.5 2 3.1126' for triangle) or input \"Quit\" for exit...");
 
             while (true)
