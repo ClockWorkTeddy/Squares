@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Squares
+namespace SquaresLib
 {
     public class Circle : Shape
     {
@@ -14,9 +14,8 @@ namespace Squares
         }
         double Radius { get; set; }
 
-        public override double GetSquare()
-        {
-            return Math.PI * Math.Pow(Radius, 2);
-        }
+        public override double GetSquare() => 
+            Math.PI * Math.Pow(Radius, 2);
+
     }
 }

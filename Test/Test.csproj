@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Squares\Squares.csproj">
+    <ProjectReference Include="..\Squares\SquaresLib.csproj">
       <Project>{5e14d1ba-7846-4db1-94b0-f9c073fb1274}</Project>
-      <Name>Squares</Name>
+      <Name>SquaresLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

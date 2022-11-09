@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interface
+namespace Squares
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Squares.Manager.Start();
+            SquaresLib.Manager.Start();
         }
     }
 }

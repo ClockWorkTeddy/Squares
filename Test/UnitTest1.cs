@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Squares;
+using SquaresLib;
 using System;
 
 namespace Test
@@ -46,5 +46,34 @@ namespace Test
 
             Assert.IsTrue(actual);
         }
+
+        [TestMethod]
+        public void BadInputTwoArgs()
+        {
+            string input = "1 2";
+            Assert.ThrowsException<BadValueException>(() => Manager.GetShape(input));
+        }
+
+        [TestMethod]
+        public void BadInputCircleString()
+        {
+            string input = "d";
+            Assert.ThrowsException<FormatException>(() => Manager.CircleProcessing(input));
+        }
+
+        [TestMethod]
+        public void BadInputTriangleString()
+        {
+            string[] input = "d a s".Split(new char[] { ' ' });
+            Assert.ThrowsException<FormatException>(() => Manager.TriangleProcessing(input));
+        }
+
+        [TestMethod]
+        public void NegativeValue()
+        {
+            string[] input = "-1 2 3".Split(new char[] { ' ' });
+            Assert.ThrowsException<BadValueException>(() => Manager.TriangleProcessing(input));
+        }
+
     }
 }

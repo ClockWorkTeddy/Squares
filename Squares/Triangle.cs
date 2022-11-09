@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Squares
+namespace SquaresLib
 {
     public class Triangle : Shape
     {
@@ -21,16 +21,17 @@ namespace Squares
 
         public override double GetSquare()
         {
-            double semi_P = (A + B + C) / 2;
+            double semiP = (A + B + C) / 2;
+            double rootValue = semiP * (semiP - A) * (semiP - B) * (semiP - C);
 
+            if (rootValue < 0)
+                throw new ArgumentException("In triangle sum of two sides must be always bigger than 3rd size!");
             //Heron's formula
-            return Math.Sqrt(semi_P * (semi_P - A) * (semi_P - B) * (semi_P - C));
+            return Math.Sqrt(semiP * (semiP - A) * (semiP - B) * (semiP - C));
         }
 
-        public bool IsTriangleRight()
-        {
-            return Pythagoras(A, B, C) || Pythagoras(B, C, A) || Pythagoras(C, A, B);
-        }
+        public bool IsTriangleRight() => 
+            Pythagoras(A, B, C) || Pythagoras(B, C, A) || Pythagoras(C, A, B);
 
         bool Pythagoras(double a, double b, double c)
         {
@@ -40,9 +41,7 @@ namespace Squares
             //Pythagorean theorem
             double difference = Math.Pow(c, 2) - (Math.Pow(a, 2) + Math.Pow(b, 2));
 
-            bool is_right = Math.Abs(difference) < epsilon;
-
-            return is_right;
+            return Math.Abs(difference) < epsilon;
         }
     }
 }
