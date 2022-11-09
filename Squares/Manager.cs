@@ -10,17 +10,24 @@ namespace SquaresLib
     {
         public static void Start()
         {
-            Console.WriteLine("Hello! Enter your data (like '1.08' for circle or '1.5 2 3.1126' for triangle)");
-            string inputData = Console.ReadLine().Trim();
+            Console.WriteLine("Hello! Enter your data (like '1.08' for circle or '1.5 2 3.1126' for triangle) or input \"Quit\" for exit...");
 
+            while (true)
+            {
+                string inputData = Console.ReadLine().Trim();
+
+                if (inputData == "Quit")
+                    break;
+
+                ProcessData(inputData);
+            }
+        }
+
+        public static void ProcessData(string inputData)
+        {
             try
             {
-                Shape shape = GetShape(inputData);
-
-                Console.WriteLine($"Square is {shape.GetSquare()}");
-
-                if (shape is Triangle triangle)
-                    Console.WriteLine($"The triangle is {(triangle.IsTriangleRight() ? "right" : "not right")}");
+                ShapeProcessing(inputData);
             }
             catch (BadValueException ex)
             {
@@ -30,6 +37,16 @@ namespace SquaresLib
             {
                 Console.WriteLine($"Something went wrong: {ex.Message}");
             }
+        }
+
+        public static void ShapeProcessing(string inputData)
+        {
+            Shape shape = GetShape(inputData);
+
+            Console.WriteLine($"Square is {shape.GetSquare()}");
+
+            if (shape is Triangle triangle)
+                Console.WriteLine($"The triangle is {(triangle.IsTriangleRight() ? "right" : "not right")}");
         }
 
         public static Shape GetShape(string shapeData)
